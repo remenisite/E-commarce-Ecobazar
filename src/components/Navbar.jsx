@@ -13,7 +13,7 @@ const Navbar = () => {
     <>
 
 
-     <header className="">
+     <header className="py-[24px] shadow-md bg-white">
       <div className="container">
         
         <div className="flex justify-between items-center">
