@@ -35,10 +35,10 @@ const Navbar = () => {
           </div>
 
           {/* Browse Dropdown */}
-          <div className="flex items-center gap-1 cursor-pointer">
-            <LuSquareArrowOutUpRight />
-            <span className="text-[14px] font-semibold font-main text-[#7E7E8F]">Browse</span>
-            <IoIosArrowDown className="" />
+          <div className="flex items-center  cursor-pointer">
+            <LuSquareArrowOutUpRight className="text-[#7E7E8F]" />
+            <span className="text-[14px] font-semibold font-main pl-[11px] pr-[41px] text-[#7E7E8F]">Browse</span>
+            <IoIosArrowDown className="text-[#C6CBD9]" />
           </div>
         </div>
 
