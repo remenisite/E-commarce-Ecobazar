@@ -6,7 +6,16 @@
 
 @utility container { margin-inline: auto;  }
 
+.container{
+    width: 1320px;
+}
+
+#Breadcrumbs{
+    background: url(../src/assets/images/Breadcrumbs.png);
+}
 
 @theme{
+    --color-green:#00B207;
+    --color-text:#1A1A1A;
     --font-main: "Poppins", sans-serif;
 }

@@ -10,6 +10,8 @@ import {
 
 import Home from "./pages/home/Home";
 import MainLayout from "./layout/MainLayout";
+import Signup from "./pages/signup/Signup";
+import Signin from "./pages/Signin/Signin";
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -17,6 +19,8 @@ const App = () => {
       <Route>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/signin" element={<Signin />}></Route>
         </Route>
       </Route>,
     ),
