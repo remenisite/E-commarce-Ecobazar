@@ -43,10 +43,13 @@ const SigninForm = () => {
 
 
               {/* Terms Checkbox */}
-              <div className="mb-6 flex items-center">
-                <input type="checkbox" className="mr-2" />
-                <label className="text-sm">Remember me</label>
-                <a href="/"> <label className="text-sm">Forget Password</label></a>
+              <div className="mb-6 flex justify-between items-center">
+                <div>
+
+                <input id="link" type="checkbox" className="mr-2" />
+                <label htmlFor="link" className="text-[14px] font-normal font-main text-[#666666]">Remember me</label>
+                </div>
+                <a href="/"> <label className="text-[14px] font-normal font-main text-[#666666]">Forget Password</label></a>
               </div>
 
               {/* Submit Button */}
@@ -59,9 +62,9 @@ const SigninForm = () => {
             </form>
 
             {/* Login Link */}
-            <p className="text-center text-sm mt-4">
+            <p className="text-center text-[14px] font-normal font-main text-[#666666]">
             Don’t have account?
-              <a href="/signup" className="text-blue-500 hover:underline">
+              <a href="/signup" className="text-[16px] font-medium font-main text-text">
                 Register
               </a>
             </p>

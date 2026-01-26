@@ -12,6 +12,7 @@ import Home from "./pages/home/Home";
 import MainLayout from "./layout/MainLayout";
 import Signup from "./pages/signup/Signup";
 import Signin from "./pages/Signin/Signin";
+import Error from "./pages/Error";
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -21,6 +22,7 @@ const App = () => {
           <Route index element={<Home />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/signin" element={<Signin />}></Route>
+          <Route path="*" element={<Error />}></Route>
         </Route>
       </Route>,
     ),

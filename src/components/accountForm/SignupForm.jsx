@@ -55,8 +55,8 @@ const SignupForm = () => {
 
           {/* Terms Checkbox */}
           <div className="mb-6 flex items-center">
-            <input type="checkbox" className="mr-2" />
-            <label className="text-sm">Accept all terms & Conditions</label>
+            <input id='link' type="checkbox" className="mr-2 text-[30px]" />
+            <label htmlFor='link' className="text-center text-[14px] font-normal font-main text-[#666666]">Accept all terms & Conditions</label>
           </div>
 
           {/* Submit Button */}
@@ -68,13 +68,14 @@ const SignupForm = () => {
           </button>
         </form>
 
-        {/* Login Link */}
-        <p className="text-center text-sm mt-4">
-          Already have account{' '}
-          <a href="#" className="text-blue-500 hover:underline">
-            Login
-          </a>
-        </p>
+   
+            {/* Login Link */}
+            <p className="text-center text-[14px] font-normal font-main text-[#666666]">
+            Already have account
+              <a href="/signin" className="text-[16px] font-medium font-main text-text">
+                Login
+              </a>
+            </p>
 </div>
 
       </div>
