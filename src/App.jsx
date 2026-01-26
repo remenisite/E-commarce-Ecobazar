@@ -8,10 +8,11 @@ import {
   RouterProvider,
 } from "react-router";
 
-import Home from "./pages/home/Home";
+
 import MainLayout from "./layout/MainLayout";
-import Signup from "./pages/signup/Signup";
-import Signin from "./pages/Signin/Signin";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
 import Error from "./pages/Error";
 
 const App = () => {
