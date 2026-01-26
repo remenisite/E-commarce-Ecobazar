@@ -7,14 +7,15 @@ import {
   Route,
   RouterProvider,
 } from "react-router";
-import LayoutOne from "./layout/LayoutOne";
+
 import Home from "./pages/home/Home";
+import MainLayout from "./layout/MainLayout";
 
 const App = () => {
   const myRoute = createBrowserRouter(
     createRoutesFromElements(
       <Route>
-        <Route path="/" element={<LayoutOne />}>
+        <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />}></Route>
         </Route>
       </Route>,
