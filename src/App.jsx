@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import Error from "./pages/Error";
+import Contact from "./pages/Contact";
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="*" element={<Error />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
         </Route>
       </Route>,
     ),

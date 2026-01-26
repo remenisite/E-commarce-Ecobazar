@@ -8,7 +8,7 @@ const SigninForm = () => {
   return (
     <>
       <Breadcrumbs h2={"Login"} />
-      <div className="">
+      <section className="">
         <div className="container flex justify-center ">
           <div className="w-[520px]">
             <form>
@@ -70,7 +70,7 @@ const SigninForm = () => {
             </p>
           </div>
         </div>
-      </div>
+      </section>
       <NewsletterSection />
     </>
   );
