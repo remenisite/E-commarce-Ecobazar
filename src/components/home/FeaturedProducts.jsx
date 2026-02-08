@@ -1,6 +1,7 @@
 import React from "react";
 import HotDeals from "../utils/HotDeals";
-import ProductCard from "../utils/ProductCard";
+import ProductCard from "../product/ProductCard";
+
 
 const FeaturedProducts = () => {
   return (
