@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import Error from "./pages/Error";
 import Contact from "./pages/Contact";
+import Wishlist from "./pages/Wishlist";
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="*" element={<Error />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/wish" element={<Wishlist />}></Route>
         </Route>
       </Route>,
     ),

@@ -28,7 +28,7 @@ const wishlistData = [
 const WishlistCom = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <h2 className="text-2xl font-semibold text-center mb-8">My Wishlist</h2>
+      <h2 className="text-[32px] font-semibold font-main text-text ">My Wishlist</h2>
 
       <div className="border rounded-lg overflow-x-auto">
         <table className="w-full min-w-[700px]">

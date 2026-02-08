@@ -38,7 +38,8 @@ const Navbar = () => {
               <FaRegHeart className="text-[32px] cursor-pointer" />
 
               <div className="relative cursor-pointer">
-                <HiOutlineShoppingBag className="text-[32px] cursor-pointer" />
+                <Link to={'wish'} ><HiOutlineShoppingBag className="text-[32px] cursor-pointer" /></Link>
+                
                 <span className="absolute -top-2 -right-2 bg-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                   2
                 </span>
