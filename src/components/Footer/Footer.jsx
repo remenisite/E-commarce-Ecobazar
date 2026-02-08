@@ -52,7 +52,7 @@ const Footer = () => {
 
           {/* Helps */}
           <div>
-            <h4 className="text-[16px] font-medium font-main text-white ">Helps</h4>
+            <h4 className="text-[16px] font-medium font-main text-white mb-4 ">Helps</h4>
             <ul className="space-y-2 text-[14px] font-normal font-main text-[#999999]">
               <li > <Link to={'/'} className="hover:text-white" >Contact</Link> </li>
               <li > <Link to={'/'} className="hover:text-white" >Faqs</Link> </li>
@@ -63,7 +63,7 @@ const Footer = () => {
 
           {/* Proxy */}
           <div>
-            <h4 className="text-[16px] font-medium font-main text-white ">Proxy</h4>
+            <h4 className="text-[16px] font-medium font-main text-white mb-4">Proxy</h4>
             <ul className="space-y-2 text-[14px] font-normal font-main text-[#999999]">
               <li > <Link to={'/'} className="hover:text-white" > About</Link></li>
               <li > <Link to={'/'} className="hover:text-white" > Shop</Link></li>
@@ -74,7 +74,7 @@ const Footer = () => {
 
           {/* Categories */}
           <div>
-            <h4 className="text-[16px] font-medium font-main text-white ">Categories</h4>
+            <h4 className="text-[16px] font-medium font-main text-white mb-4">Categories</h4>
             <ul className="space-y-2 text-[14px] font-normal font-main text-[#999999]">
               <li > <Link to={'/'} className="hover:text-white" >Fruit & Vegetables</Link> </li>
               <li > <Link to={'/'} className="hover:text-white" > Meat & Fish</Link></li>

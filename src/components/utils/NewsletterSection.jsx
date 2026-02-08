@@ -27,8 +27,7 @@ const NewsletterSection = () => {
             <a href="/" className='w-[40px] h-[40px] hover:bg-green hover:text-white rounded-full flex items-center justify-center'><FaFacebookF className="  text-[24px] cursor-pointer" /></a>
             <a href="/" className='w-[40px] h-[40px] hover:bg-green hover:text-white rounded-full flex items-center justify-center'><FaTwitter className="  text-[24px] cursor-pointer" /></a>
             <a href="/" className='w-[40px] h-[40px] hover:bg-green hover:text-white rounded-full flex items-center justify-center'><FaPinterestP className="  text-[24px] cursor-pointer" /></a>
-            <a href="/" className='w-[40px] h-[40px] hover:bg-green hover:text-white rounded-full flex items-center justify-center'><FaInstagram className="  text-[24px] cursor-pointer" /></a>
-           
+            <a href="/" className='w-[40px] h-[40px] hover:bg-green hover:text-white rounded-full flex items-center justify-center'><FaInstagram className="  text-[24px] cursor-pointer" /></a>      
           </div>
       </div>
     </div>
