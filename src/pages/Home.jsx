@@ -1,18 +1,22 @@
 import React from 'react'
-import Banner from '../components/home/banner/Banner'
-import ProductCard from '../components/home/product/ProductCard'
-import PopularCategories from '../components/home/Popular Categories'
+import PopularProducts from '../components/home/PopularProducts'
+import FeaturedProducts from '../components/home/FeaturedProducts'
 
 const Home = () => {
   return (
-    <>
+    <div>
+
+      <PopularProducts />
+      <FeaturedProducts />
+
+
     
-    <Banner />
-    <PopularCategories />
+
+
 
     
     
-    </>
+    </div>
   )
 }
 
