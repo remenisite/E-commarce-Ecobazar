@@ -3,6 +3,7 @@ import PopularProducts from "../components/home/PopularProducts";
 import FeaturedProducts from "../components/home/FeaturedProducts";
 import CategoryProduct from "../components/home/CategoryProduct";
 import ServiceFeatures from "../components/utils/ServiceFeatures";
+import VectorIcon from "../components/home/VectorIcon";
 
 const Home = () => {
   return (
@@ -14,6 +15,9 @@ const Home = () => {
       <CategoryProduct />
       <PopularProducts />
       <FeaturedProducts />
+
+      <VectorIcon />
+
     </div>
   );
 };
