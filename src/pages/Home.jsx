@@ -5,6 +5,7 @@ import CategoryProduct from "../components/home/CategoryProduct";
 import ServiceFeatures from "../components/utils/ServiceFeatures";
 import VectorIcon from "../components/home/VectorIcon";
 
+
 const Home = () => {
   return (
     <div className="container">
