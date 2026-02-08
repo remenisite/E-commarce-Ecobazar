@@ -1,6 +1,6 @@
 import React from "react";
 import HotDeals from "../utils/HotDeals";
-import ProductCard from "./product/ProductCard";
+import ProductCard from "../utils/ProductCard";
 
 const FeaturedProducts = () => {
   return (
@@ -14,7 +14,6 @@ const FeaturedProducts = () => {
           <ProductCard />
           <ProductCard />
           <ProductCard />
-
         </div>
       </div>
     </section>

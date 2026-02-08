@@ -2,7 +2,7 @@ import { FaLock } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
 
-import productImg from '../../../assets/images/productImg.png'
+import productImg from '../../assets/images/productImg.png'
 
 const ProductCard = () => {
   return (
