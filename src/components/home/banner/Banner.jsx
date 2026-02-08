@@ -1,29 +1,10 @@
-import React from 'react'
-
+import { FaShoppingCart, FaLeaf, FaTags } from 'react-icons/fa';
+import ProductCard from '../product/ProductCard';
 
 const Banner = () => {
   return (
-    <>
-    
+<div className='my-[100px] container'><ProductCard /> </div>
+  );
+};
 
- <section>
-    <div className="container">
-
-        <div id='bigBanner' >
-
-        </div>
-        
-    </div>
- </section>
-    
-    
-    
-    
-    
-    
-    
-    </>
-  )
-}
-
-export default Banner
+export default Banner;

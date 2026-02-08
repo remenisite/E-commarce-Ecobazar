@@ -19,3 +19,10 @@
     --color-text:#1A1A1A;
     --font-main: "Poppins", sans-serif;
 }
+
+#bigBanner{
+    background: url("../src/assets/images/Bannar\ Big.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
