@@ -5,7 +5,7 @@ import TesttimonalCard from "./TesttimonalCard";
 export default function Testimonial() {
 
   return (
-    <section className="">
+    <section className="bg-[#F2F2F2] py-[60px]">
       <div className="container">
         <h2 className="text-[32px] font-semibold font-main text-text">Client Testimonials</h2>
 
