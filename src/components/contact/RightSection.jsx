@@ -3,9 +3,9 @@ import React from "react";
 const RightSection = () => {
   return (
     <>
-      {/* Right Contact Form */}{" "}
+
       <div>
-        {" "}
+  
         <h2 className="text-2xl font-semibold mb-2">Just Say Hello!</h2>{" "}
         <p className="text-gray-600 mb-6">
           {" "}

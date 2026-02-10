@@ -1,22 +1,21 @@
 import React from "react";
 import Breadcrumbs from "../components/utils/Breadcrumbs";
-import NewsletterSection from "../components/utils/NewsletterSection";
 import LeftSection from "../components/contact/LeftSection";
 import RightSection from "../components/contact/RightSection";
+import MapSection from "../components/contact/MapSection";
 
 
 const Contact = () => {
   return (
     <>
       <Breadcrumbs h2={"cntact"} />
-      <div className="">
-        {" "}
-        <div className="container">
+
+        <div className="container py-[80px]">
    <LeftSection />
    <RightSection />
         </div>
-      </div>
-      <NewsletterSection />
+
+<MapSection />
     </>
   );
 };
