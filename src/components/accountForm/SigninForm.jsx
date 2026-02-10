@@ -1,7 +1,7 @@
 import React from "react";
 import { FaEnvelope, FaLock } from 'react-icons/fa'; 
 import Breadcrumbs from '../utils/Breadcrumbs';
-import NewsletterSection from '../utils/NewsletterSection';
+
 
 
 const SigninForm = () => {
@@ -71,7 +71,6 @@ const SigninForm = () => {
           </div>
         </div>
       </section>
-      <NewsletterSection />
     </>
   );
 };
