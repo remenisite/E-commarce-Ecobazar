@@ -6,6 +6,7 @@ import ServiceFeatures from "../components/utils/ServiceFeatures";
 import VectorIcon from "../components/home/VectorIcon";
 import Testimonial from "../components/home/Testimonial";
 import Instragram from "../components/home/Instragram";
+import LatestNews from "../components/home/LatestNews";
 
 const Home = () => {
   return (
@@ -15,6 +16,8 @@ const Home = () => {
       <CategoryProduct />
       <PopularProducts />
       <FeaturedProducts />
+
+      <LatestNews />
 
       <Testimonial />
 
