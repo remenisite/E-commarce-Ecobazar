@@ -1,0 +1,67 @@
+import React from 'react'
+
+import { FaTimes, FaFacebookF, FaTwitter, FaPinterestP, FaInstagram } from "react-icons/fa";
+
+import wishCartImg from "../../assets/images/wishCartImg.png"
+
+const wishlistData = [
+  {
+    id: 1,
+    name: "Green Capsicum",
+    price: 14.99,
+    oldPrice: 20.99,
+    stock: "In Stock",
+    image: wishCartImg,
+  },
+
+];
+
+
+const WishCart = () => {
+  return (
+    <>
+    
+              <tbody>
+            {wishlistData.map((item) => (
+              <tr key={item.id} className="border-t">
+                <td className="p-4 flex items-center gap-4">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-[100px] h-[100px] object-contain"
+                  />
+                  <span className="text-[16px] font-normal font-main text-text">{item.name}</span>
+                </td>
+
+                <td className="p-4 text-[16px] font-medium font-main text-text">
+                  <span className="">${item.price.toFixed(2)}</span>
+                  {item.oldPrice && (
+                    <span className="line-through text-gray-400 ml-2">
+                      ${item.oldPrice}
+                    </span>
+                  )}
+                </td>
+
+                <td className="p-4">
+                  <span  className='text-[14px] font-normal font-main text-green bg-[#20b5251f] py-1 px-2 '> {item.stock} </span>
+                </td>
+
+                <td className="p-4">
+                  <button className='text-[14px] font-semibold font-main text-white'  >  Add to Cart  </button>
+                </td>
+
+                <td className="p-4">
+                  <FaTimes className="text-gray-400 cursor-pointer" />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+    
+    
+    
+    
+    </>
+  )
+}
+
+export default WishCart

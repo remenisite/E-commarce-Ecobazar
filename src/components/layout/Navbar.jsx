@@ -35,16 +35,13 @@ const Navbar = () => {
 
             {/* Icons */}
             <div className="flex items-center gap-6">
-              <FaRegHeart className="text-[32px] cursor-pointer" />
+              <Link to={'wish'} ><FaRegHeart className="text-[32px] cursor-pointer" /></Link>
+              
 
               <div className="relative cursor-pointer">
-                <Link to={'wish'} ><HiOutlineShoppingBag className="text-[32px] cursor-pointer" /></Link>
-                
-                <span className="absolute -top-2 -right-2 bg-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                  2
-                </span>
+                <Link to={'/'} ><HiOutlineShoppingBag className="text-[32px] cursor-pointer" /></Link>
+              <span className="absolute -top-2 -right-2 bg-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">  2  </span>
               </div>
-
               <div className="hidden md:block text-[11px] font-normal font-main">
                 <p className="text-[#4D4D4D]">Shopping cart:</p>
                 <p className="text-[14px] font-medium font-main text-text">$57.00</p>
@@ -64,13 +61,9 @@ const Navbar = () => {
                   <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >       Blog <MdKeyboardArrowDown /></Link></li>
                   <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >   About Us</Link></li>
                   <li><Link to={'/contact'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >   Contact Us</Link></li>
-
                 </ul>
-             
               </div>
-        
             </nav>
-
             {/* Phone */}
             <div className="flex items-center gap-2 font-medium">
               <FiPhoneCall className="text-[28px] text-text" />
