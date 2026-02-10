@@ -4,15 +4,13 @@ import FeaturedProducts from "../components/home/FeaturedProducts";
 import CategoryProduct from "../components/home/CategoryProduct";
 import ServiceFeatures from "../components/utils/ServiceFeatures";
 import VectorIcon from "../components/home/VectorIcon";
-import Testimonial from "../components/testimonial/Testimonial";
-
+import Testimonial from "../components/home/Testimonial";
+import Instragram from "../components/home/Instragram";
 
 const Home = () => {
   return (
     <div className="">
-
       <ServiceFeatures />
-
 
       <CategoryProduct />
       <PopularProducts />
@@ -21,8 +19,7 @@ const Home = () => {
       <Testimonial />
 
       <VectorIcon />
-
-
+      <Instragram />
     </div>
   );
 };
