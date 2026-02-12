@@ -55,12 +55,12 @@ const Navbar = () => {
             <nav className="hidden md:flex items-center gap-6 font-medium">
               <div className="flex items-center">
                 <ul className="flex items-center justify-center gap-[32px]">
-                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >   Home <MdKeyboardArrowDown /></Link></li>
-                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >                   Shop <MdKeyboardArrowDown /></Link></li>
-                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >        Pages <MdKeyboardArrowDown /></Link></li>
-                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >       Blog <MdKeyboardArrowDown /></Link></li>
-                  <li><Link to={'/about'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >   About Us</Link></li>
-                  <li><Link to={'/contact'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >   Contact Us</Link></li>
+                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  > Home <MdKeyboardArrowDown /></Link></li>
+                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  > Shop <MdKeyboardArrowDown /></Link></li>
+                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  > Pages <MdKeyboardArrowDown /></Link></li>
+                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  > Blog <MdKeyboardArrowDown /></Link></li>
+                  <li><Link to={'/about'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  > About Us</Link></li>
+                  <li><Link to={'/contact'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  > Contact Us</Link></li>
                 </ul>
               </div>
             </nav>

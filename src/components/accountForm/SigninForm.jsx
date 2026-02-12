@@ -1,6 +1,8 @@
 import React from "react";
 import { FaEnvelope, FaLock } from 'react-icons/fa'; 
 import Breadcrumbs from '../utils/Breadcrumbs';
+import Button from "../ui/Button";
+import Input from "../ui/Input";
 
 
 
@@ -9,56 +11,27 @@ const SigninForm = () => {
     <>
       <Breadcrumbs h2={"Login"} />
       <section className="">
-        <div className="container flex justify-center ">
-          <div className="w-[520px]">
-            <form>
-              {/* Email Field */}
-              <div className="mb-4">
-                <h2 className="text-[32px] font-semibold font-main text-text text-center">Sign In</h2>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <div className="flex items-center border rounded px-3 py-2">
-                  <FaEnvelope className="text-gray-400 mr-2" />
-                  <input
-                    type="email"
-                    className="w-full outline-none"
-                    placeholder="Enter your email"
-                  />
-                </div>
-              </div>
+        <div className="container flex justify-center py-[80px]">
+          <div className="w-[520px] bg-white shadow-2xl pt-[24px] pb-[32px] rounded-[8px] text-center">
+                        <h2 className="text-[32px] font-medium font-main text-text mb-[20px]">Sign In</h2>
+            <form className="flex flex-col gap-[12px] px-[24px]">
+              <Input type="email" placeholder={'Email'} className=" placeholder:text-[16px] font-medium font-main text-[#999999]" />
+              <Input type="password" placeholder={'password'} className=" placeholder:text-[16px] font-medium font-main text-[#999999]" />
 
-              {/* Password Field */}
-              <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">
-                  Password
+<div className=" flex justify-between">
+
+              <div className=" flex gap-[10px] items-center">
+                <input id="link" type="checkbox" className=" text-[30px]" />
+                <label
+                  htmlFor="link"
+                  className="text-center text-[14px] font-normal font-main text-[#666666]"
+                  >
+        Remember me
                 </label>
-                <div className="flex items-center border rounded px-3 py-2">
-                  <FaLock className="text-gray-400 mr-2" />
-                  <input
-                    type="password"
-                    className="w-full outline-none"
-                    placeholder="Enter password"
-                  />
-                </div>
               </div>
-
-
-              {/* Terms Checkbox */}
-              <div className="mb-6 flex justify-between items-center">
-                <div>
-
-                <input id="link" type="checkbox" className="mr-2" />
-                <label htmlFor="link" className="text-[14px] font-normal font-main text-[#666666]">Remember me</label>
-                </div>
-                <a href="/"> <label className="text-[14px] font-normal font-main text-[#666666]">Forget Password</label></a>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition"
-              >
-                Create Account
-              </button>
+              <a href="/" className=" text-[14px] font-normal font-main text-[#666666]">Forget Password</a>
+                  </div>
+              <Button className="my-[20px]" >Login</Button>
             </form>
 
             {/* Login Link */}
