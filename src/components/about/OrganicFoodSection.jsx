@@ -5,7 +5,7 @@ import orImg from '../../assets/images/orgaImg.png'
 
 const OrganicFoodSection = () => {
   return (
-    <div className="flex items-center justify-between gap-[58px]">
+    <div className="container flex items-center justify-between gap-[58px]">
 
       <div>
         <h2 className="text-[56px] font-semibold font-main text-text">
