@@ -16,6 +16,7 @@ import Signin from "./pages/Signin";
 import Error from "./pages/Error";
 import Contact from "./pages/Contact";
 import Wishlist from "./pages/Wishlist";
+import About from "./pages/About";
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="*" element={<Error />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/wish" element={<Wishlist />}></Route>
+          <Route path="/about" element={<About />}></Route>
         </Route>
       </Route>,
     ),

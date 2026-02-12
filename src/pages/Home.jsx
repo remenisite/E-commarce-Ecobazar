@@ -12,15 +12,11 @@ const Home = () => {
   return (
     <div className="">
       <ServiceFeatures />
-
       <CategoryProduct />
       <PopularProducts />
       <FeaturedProducts />
-
       <LatestNews />
-
       <Testimonial />
-
       <VectorIcon />
       <Instragram />
     </div>

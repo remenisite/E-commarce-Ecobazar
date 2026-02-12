@@ -12,6 +12,9 @@
 
 #Breadcrumbs{
     background: url(../src/assets/images/Breadcrumbs.png);
+        background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 @theme{

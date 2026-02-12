@@ -59,7 +59,7 @@ const Navbar = () => {
                   <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >                   Shop <MdKeyboardArrowDown /></Link></li>
                   <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >        Pages <MdKeyboardArrowDown /></Link></li>
                   <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >       Blog <MdKeyboardArrowDown /></Link></li>
-                  <li><Link to={'/'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >   About Us</Link></li>
+                  <li><Link to={'/about'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >   About Us</Link></li>
                   <li><Link to={'/contact'} className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"  >   Contact Us</Link></li>
                 </ul>
               </div>
