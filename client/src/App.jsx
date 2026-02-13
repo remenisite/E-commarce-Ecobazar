@@ -8,7 +8,6 @@ import {
   RouterProvider,
 } from "react-router";
 
-
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
@@ -17,6 +16,7 @@ import Error from "./pages/Error";
 import Contact from "./pages/Contact";
 import Wishlist from "./pages/Wishlist";
 import About from "./pages/About";
+import ShoppingCart from "./pages/ShoppingCart";
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -30,6 +30,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/wish" element={<Wishlist />}></Route>
           <Route path="/about" element={<About />}></Route>
+          <Route path="/shopping" element={<ShoppingCart />}></Route>
         </Route>
       </Route>,
     ),

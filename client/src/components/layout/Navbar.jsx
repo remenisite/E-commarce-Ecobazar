@@ -36,10 +36,8 @@ const Navbar = () => {
             {/* Icons */}
             <div className="flex items-center gap-6">
               <Link to={'wish'} ><FaRegHeart className="text-[32px] cursor-pointer" /></Link>
-              
-
               <div className="relative cursor-pointer">
-                <Link to={'/'} ><HiOutlineShoppingBag className="text-[32px] cursor-pointer" /></Link>
+                <Link to={'shopping'} ><HiOutlineShoppingBag className="text-[32px] cursor-pointer" /></Link>
               <span className="absolute -top-2 -right-2 bg-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">  2  </span>
               </div>
               <div className="hidden md:block text-[11px] font-normal font-main">
