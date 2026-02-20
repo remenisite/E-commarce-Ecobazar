@@ -1,0 +1,20 @@
+#left_Hero{
+    background: url("/images/left-hero.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#right_u_hero{
+    background: url("/images/r-u-hero.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#right_d_hero{
+    background: url("/images/r-d-hero.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
