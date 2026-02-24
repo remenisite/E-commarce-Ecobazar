@@ -10,6 +10,7 @@ import Testimonial from "./components/home/Testimonial";
 import VectorIcon from "./components/home/VectorIcon";
 import Instragram from "./components/home/Instragram";
 import Banner from "./components/home/Banner";
+import SummerSaleBanner from "./components/home/SummerSaleBanner";
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
       <ServiceFeatures />
       <CategoryProduct />
       <PopularProducts />
+      <SummerSaleBanner />
       <FeaturedProducts />
       <LatestNews />
       <Testimonial />

@@ -44,3 +44,11 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+
+#summer{
+    background: url("/images/disImg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
