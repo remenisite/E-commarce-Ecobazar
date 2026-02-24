@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -15,8 +14,7 @@ export default function HeroSection() {
           <button className="mt-6 flex items-center  gap-2 bg-white  px-6 py-3 rounded-full text-[16px] font-semibold font-main text-green hover:bg-green-100 transition"> Shop now   <FaArrowRight /> </button>
           </div>
         </div>
-<div>
-
+        <div>
         <div id="right_u_hero" className=" w-[423px] rounded-[10px]">
           <div className="pt-[32px] pl-[32px] pb-[120px]">
             <h4 className="text-[14px] font-medium font-main text-text">Summer Sale</h4>

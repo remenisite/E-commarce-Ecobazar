@@ -4,7 +4,6 @@ import HeroSection from "./banner/HeroSection";
 const Banner = () => {
   return (
     <div className="my-[100px] container">
-
       <HeroSection />
     </div>
   );

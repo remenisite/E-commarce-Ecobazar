@@ -12,6 +12,7 @@ import Instragram from "./components/home/Instragram";
 import Banner from "./components/home/Banner";
 import SummerSaleBanner from "./components/home/SummerSaleBanner";
 import NewsletterSection from "./components/utils/NewsletterSection";
+import PromoCard from "./components/home/PromoCardsSection/PromoCard";
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
       <Testimonial />
       <VectorIcon />
       <Instragram />
+      <PromoCard />
     </div>
   );
 };
