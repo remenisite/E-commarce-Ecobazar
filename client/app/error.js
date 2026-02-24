@@ -1,5 +1,6 @@
-import React from "react";
+"use client"
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "@/app/components/utils/Breadcrumbs";
@@ -23,13 +24,11 @@ const Error = () => {
             Ut consequat ac tortor eu vehicula. Aenean accumsan purus eros.
             Maecenas sagittis tortor at metus mollis
           </h4>
-
           <Link
             href={"/"}
             className="text-[16px] mt-[40px] font-semibold font-main text-white bg-green hover:bg-green-500 rounded-[43px] py-[16px] px-[40px]"
           >
-            {" "}
-            Back to Home{" "}
+            Back to Home
           </Link>
         </div>
       </div>

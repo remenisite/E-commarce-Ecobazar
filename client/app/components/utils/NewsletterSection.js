@@ -5,7 +5,6 @@ const NewsletterSection = () => {
   return (
     <div className="bg-[#E6E6E6] py-[40px]">
       <div className="container flex justify-between items-center">
-        {/* Left Content */}
         <div className="">
           <h2 className="text-[24px] font-semibold font-main text-text">Subscribe our Newsletter</h2>
           <p className="text-[14px] font-normal font-main text-[#999999] w-[448px]">
@@ -13,7 +12,6 @@ const NewsletterSection = () => {
             Phasellus imperdiet elit eu magna.
           </p>
         </div>
-        {/* Right Content */}
         <div className="md:w-1/2 flex flex-col gap-4">
     <form className="flex justify-between  items-center bg-white rounded-[46px] border-[#E6E6E6] rounded overflow-hidden">
           <input type="email" placeholder="Your email address" className="w-full px-[24px] text-[16px] font-normal font-main placeholder:text-[#808080] border-none outline-none" />
@@ -22,7 +20,6 @@ const NewsletterSection = () => {
           </button>
         </form>
         </div>
-          {/* Social Icons */}
           <div className="flex">
             <a href="/" className='w-[40px] h-[40px] hover:bg-green hover:text-white rounded-full flex items-center justify-center'><FaFacebookF className="  text-[24px] cursor-pointer" /></a>
             <a href="/" className='w-[40px] h-[40px] hover:bg-green hover:text-white rounded-full flex items-center justify-center'><FaTwitter className="  text-[24px] cursor-pointer" /></a>

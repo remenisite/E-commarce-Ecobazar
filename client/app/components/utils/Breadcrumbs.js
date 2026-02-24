@@ -13,8 +13,7 @@ const Breadcrumbs = ({ h2 }) => {
         <IoIosArrowForward className="text-[#808080]" />
         <Link
           href={"/"}
-          className="text-[16px] font-normal font-main text-green"
-        >
+          className="text-[16px] font-normal font-main text-green">
           {h2}
         </Link>
       </div>
