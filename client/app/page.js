@@ -11,6 +11,7 @@ import VectorIcon from "./components/home/VectorIcon";
 import Instragram from "./components/home/Instragram";
 import Banner from "./components/home/Banner";
 import SummerSaleBanner from "./components/home/SummerSaleBanner";
+import NewsletterSection from "./components/utils/NewsletterSection";
 
 
 const Home = () => {
