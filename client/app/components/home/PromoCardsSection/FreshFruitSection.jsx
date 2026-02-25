@@ -1,25 +1,15 @@
 "use client";
 import { FiArrowRight } from "react-icons/fi";
 import Image from "next/image";
+import Button from "../../ui/Button";
 export default function SaleOfMonthCard() {
   return (
-    <section  className="w-full flex justify-center py-16 bg-gray-100">
-      <div className="relative w-[360px] rounded-2xl overflow-hidden shadow-2xl">
-      
-        <div id="deals" className="bg-gradient-to-b from-blue-500 to-blue-700 text-white text-center px-8 pt-10 pb-40 relative">
-          <p className="text-xs uppercase tracking-widest text-blue-100 mb-2">
-            Best Deals
-          </p>
-
-          <h2 className="text-3xl font-bold mb-6">Sale of the Month</h2>
-
-          <button className="inline-flex items-center gap-2 bg-white text-green-600 hover:bg-gray-100 transition px-6 py-3 rounded-full text-sm font-semibold shadow-md">
-            Shop Now
-            <FiArrowRight size={16} />
-          </button>
-
-
-        </div>
+    <section className="w-[425px] rounded-[8px] text-center ">
+      <div id="deals" className="pb-[294px] pt-[35px]">
+        <p className="text-[14px] font-medium font-main text-white">Best Deals</p>
+        <h2 className="mt-[16px] mb-[8px] text-[40px] font-semibold font-main text-white">Sale of the Month</h2>
+        <Button size="sm" > Shop Now</Button>
+ 
       </div>
     </section>
   );

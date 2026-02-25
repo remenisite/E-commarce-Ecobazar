@@ -5,7 +5,7 @@ import FreshFruitCard from './FreshFruitSection'
 
 const PromoCard = () => {
   return (
-    <div>
+    <div className='container grid grid-cols-3 gap-[24px]'>
 
         <SaleOfMonthCard />
         <LowFatMeatSection />
