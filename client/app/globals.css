@@ -52,3 +52,12 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+#deals{
+    background: url("/images/dealpic.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+
