@@ -68,7 +68,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <Link
-                      href={"/"}
+                      href={"/checkout"}
                       className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"
                     >
                       {" "}

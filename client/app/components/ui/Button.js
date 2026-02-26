@@ -13,7 +13,7 @@ const variants = {
 const sizes = {
   sm: "px-[32px] py-[14px] text-[14px] font-semibold text-[#4D4D4D] font-main",
   md: " px-[32px] py-[14px] text-[14px] font-semibold text-[#4D4D4D] font-main",
-  lg: "px-5 py-2.5 text-base",
+  lg: "px-[32px] py-[14px] text-[16px] font-semibold font-main text-white",
 };
 
 const Button = ({

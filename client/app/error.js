@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "@/app/components/utils/Breadcrumbs";
+import Button from "./components/ui/Button";
 
 const Error = () => {
   return (
@@ -14,22 +15,17 @@ const Error = () => {
           <Image
             src="/images/errorImg.png"
             alt="errimg"
-            width={400}
-            height={300}
+            width={600}
+            height={400}
           />
           <h2 className="text-[40px] mt-[32px] mb-[20px] font-semibold font-main text-text">
             Oops! page not found
           </h2>
-          <h4 className="text-[16px] font-medium font-main text-[#808080] w-[612px] text-center">
-            Ut consequat ac tortor eu vehicula. Aenean accumsan purus eros.
+          <h4 className="text-[16px] font-medium font-main text-[#808080] text-center mb-[30px]">
+            Ut consequat ac tortor eu vehicula. Aenean accumsan purus eros. <br />
             Maecenas sagittis tortor at metus mollis
           </h4>
-          <Link
-            href={"/"}
-            className="text-[16px] mt-[40px] font-semibold font-main text-white bg-green hover:bg-green-500 rounded-[43px] py-[16px] px-[40px]"
-          >
-            Back to Home
-          </Link>
+          <Button variant="primary" size="md">Back to Home</Button>
         </div>
       </div>
     </div>

@@ -22,13 +22,13 @@ const Home = () => {
       <ServiceFeatures />
       <CategoryProduct />
       <PopularProducts />
+      <PromoCard />
       <SummerSaleBanner />
       <FeaturedProducts />
       <LatestNews />
       <Testimonial />
       <VectorIcon />
       <Instragram />
-      <PromoCard />
     </div>
   );
 };
