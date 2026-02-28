@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const ProductCard = () => {
   return (
-    <div className="w-[264px] h-[350px] border border-[#E6E6E6] rounded-[8px] hover:border hover:border-green   shadow-md overflow-hidden group">
+    <div className="w-[264px] h-[350px]  border-[#E6E6E6] rounded-[8px] hover:border hover:border-green shadow-md overflow-hidden group">
       <div className="hover:scale-110 duration-300">
         <Image
           src="/images/productImg.png"
