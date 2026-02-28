@@ -1,6 +1,6 @@
 import React from "react";
 
-const baseStyles = "w-full rounded-[6px] border px-[16px] py-[14px] text-sm transition focus:outline-none focus:ring-2";
+const baseStyles = "w-full rounded-[6px] border px-[16px] py-[14px] text-[16px] font-normal font-main text-text placeholder:text-none transition focus:outline-none focus:ring-2";
 
 const sizes = {
   sm: "px-3 py-1.5 text-sm",

@@ -4,18 +4,17 @@ import RightSection from "@/app/components/contact/RightSection";
 import Breadcrumbs from "@/app/components/utils/Breadcrumbs";
 import React from "react";
 
-
 const Contact = () => {
   return (
     <>
       <Breadcrumbs h2={"contact"} />
 
-        <div className="container py-[80px]">
-   <LeftSection />
-   <RightSection />
-        </div>
+      <div className="container py-[80px] flex gap-[24px] ">
+        <LeftSection />
+        <RightSection />
+      </div>
 
-<MapSection />
+      <MapSection />
     </>
   );
 };
