@@ -16,7 +16,7 @@ const Navbar = () => {
       <nav className="w-full bg-white border-b">
         <div className="container">
           <div className="container flex items-center justify-between py-[27px] gap-4">
-            <Link href="#"><Image src="/images/main-logo.png"width={200}  height={200} alt="navbar-logo" /></Link>
+            <Link href="/"><Image src="/images/main-logo.png"width={200}  height={200} alt="navbar-logo" /></Link>
             <div className="hidden rounded-[6px] md:flex border border-gray-300 flex-1 max-w-xl mx-6">
               <IoSearchOutline className="text-[20px] " />
               <input
@@ -98,7 +98,6 @@ const Navbar = () => {
                       href={"/contact"}
                       className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"
                     >
-                      {" "}
                       Contact Us
                     </Link>
                   </li>

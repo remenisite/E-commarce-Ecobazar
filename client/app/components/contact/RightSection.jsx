@@ -1,4 +1,6 @@
 import React from "react";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
 
 const RightSection = () => {
   return (
@@ -6,42 +8,18 @@ const RightSection = () => {
 
       <div>
   
-        <h2 className="text-2xl font-semibold mb-2">Just Say Hello!</h2>{" "}
+        <h2 className="text-2xl font-semibold mb-2">Just Say Hello!</h2>
         <p className="text-gray-600 mb-6">
-          {" "}
-          Reach out to us for help or to start a project. We’d love to hear from
-          you.{" "}
-        </p>{" "}
+Do you fancy saying hi to me or you want to get started with your project and you need my help? Feel free to contact me.
+        </p>
         <form className="space-y-4">
-          {" "}
-          <input
-            type="text"
-            placeholder="Template Cookie"
-            className="w-full border px-4 py-2 rounded outline-none"
-          />{" "}
-          <input
-            type="email"
-            placeholder="zakirsoft@gmail.com"
-            className="w-full border px-4 py-2 rounded outline-none"
-          />{" "}
-          <textarea
-            rows="3"
-            placeholder="Hello!"
-            className="w-full border px-4 py-2 rounded outline-none resize-none"
-          />{" "}
-          <input
-            type="text"
-            placeholder="Subject"
-            className="w-full border px-4 py-2 rounded outline-none"
-          />{" "}
-          <button
-            type="submit"
-            className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition"
-          >
-            {" "}
-            Send Message{" "}
-          </button>{" "}
-        </form>{" "}
+          <Input type="text" size="md" placeholder="Template Cookie" />
+          <Input placeholder="Template Cookie" />
+          <Input placeholder="Template Cookie" />
+          <Input placeholder="Template Cookie" />
+          <Button >Send Message</Button>
+
+        </form>
       </div>
     </>
   );

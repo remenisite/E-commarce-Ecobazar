@@ -1,10 +1,10 @@
 import React from "react";
 
-const baseStyles = "w-[472px] rounded-[6px] border px-[16px] py-[14px] text-sm transition focus:outline-none focus:ring-2";
+const baseStyles = "w-full rounded-[6px] border px-[16px] py-[14px] text-sm transition focus:outline-none focus:ring-2";
 
 const sizes = {
   sm: "px-3 py-1.5 text-sm",
-  md: "px-3 py-2 text-sm",
+  md: " text-[16px] font-normal font-medium text-[#666666]",
   lg: "px-4 py-3 text-base",
 };
 
@@ -49,15 +49,13 @@ const Input = ({
           ${
             error
               ? "border-red-500 focus:ring-red-500"
-              : "border-gray-300 focus:ring-blue-500"
+              : "border-gray-300 focus:ring-[#00B207]"
           }
           ${disabled ? "bg-gray-100 cursor-not-allowed" : ""}
           ${className}
         `}
         {...props}
       />
-
-      {/* Helper / Error Text */}
       {(helperText || error) && (
         <p
           className={`mt-1 text-xs ${error ? "text-red-600" : "text-gray-500"}`}
