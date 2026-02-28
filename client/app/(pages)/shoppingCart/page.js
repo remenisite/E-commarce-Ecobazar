@@ -3,14 +3,13 @@
 import CartTotal from "@/app/components/ShoppingCart/CartTotal";
 import CouponCode from "@/app/components/ShoppingCart/CouponCode";
 import ShoopingDetails from "@/app/components/ShoppingCart/ShoopingDetails";
+import CmnHead from "@/app/components/utils/CmnHead";
 import React from "react";
 
 const ShoppingCart = () => {
   return (
     <section className="text-center">
-      <h2 className="text-[32px] font-semibold font-main text-text">
-        My Shopping Cart
-      </h2>
+      <CmnHead text={"My Shopping Cart"} />
       <div className="container flex">
         <div>
           <ShoopingDetails />
