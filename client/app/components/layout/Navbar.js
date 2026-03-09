@@ -52,7 +52,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       href={"/"}
-                      className="text-[14px] font-medium font-main text-[#666666] flex items-center gap-1"
+                      className="text-[16px] font-medium font-main text-[#666666] flex items-center gap-1"
                     >
                       Home <MdKeyboardArrowDown />
                     </Link>

@@ -22,7 +22,6 @@ const ShopPages = () => {
         <ProductCard />
         <ProductCard />
         <ProductCard />
-        <ProductCard />
 
     </div>
   )
