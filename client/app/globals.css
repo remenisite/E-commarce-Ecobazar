@@ -63,6 +63,7 @@
 
 #banner{
       background: url("/images/heroSection.png");
+      min-height: 500px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
