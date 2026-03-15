@@ -1,14 +1,14 @@
 import React from "react";
-import SidebarNavigation from "../components/layout/SidebarNavigation.jsx";
-import ProfileCard from "../components/dashboard/ProfileCard.jsx";
-import OrderHistory from "../components/dashboard/OrderHistory.jsx";
+import ProfileCard from "../components/dashboard/ProfileCard";
+import RecentOrder from "../components/dashboard/RecentOrder";
+
 
 const Dashboard = () => {
   return (
     <div className="container">
       <div className="">
         <ProfileCard />
-        <OrderHistory />
+        <RecentOrder />
       </div>
     </div>
   );

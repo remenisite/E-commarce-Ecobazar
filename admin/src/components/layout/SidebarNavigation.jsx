@@ -8,6 +8,7 @@ import {
   FiSettings, 
   FiLogOut 
 } from "react-icons/fi";
+import { Link } from "react-router";
 
 export default function SidebarNavigation() {
   return (
@@ -17,16 +18,16 @@ export default function SidebarNavigation() {
       <ul className="space-y-2">
 
         {/* Dashboard */}
-        <li className="flex items-center gap-3 pl-[20px] py-[16px] text-[22px] font-normal font-main text-[#666666] hover:text-[22px] hover:text-text hover:bg-[#EDF2EE] hover:border-l-4 border-green  cursor-pointer">
+        <Link to={'/'} className="flex items-center gap-3 pl-[20px] py-[16px] text-[22px] font-normal font-main text-[#666666] hover:text-[22px] hover:text-text hover:bg-[#EDF2EE] hover:border-l-4 border-green  cursor-pointer">
           <FiGrid />
           <span>Dashboard</span>
-        </li>
+        </Link>
 
         {/* Order History */}
-        <li className="flex items-center gap-3  pl-[20px] py-[16px] text-[22px] font-normal font-main text-[#666666] hover:text-[22px] hover:text-text hover:bg-[#EDF2EE] hover:border-l-4 border-green  cursor-pointer">
+        <Link to={'/order'} className="flex items-center gap-3  pl-[20px] py-[16px] text-[22px] font-normal font-main text-[#666666] hover:text-[22px] hover:text-text hover:bg-[#EDF2EE] hover:border-l-4 border-green  cursor-pointer">
           <FiRefreshCw  className="text-[24px]" />
           <span>Order History</span>
-        </li>
+        </Link>
 
         {/* Wishlist */}
         <li className="flex items-center gap-3  pl-[20px] py-[16px] text-[22px] font-normal font-main text-[#666666] hover:text-[22px] hover:text-text hover:bg-[#EDF2EE] hover:border-l-4 border-green  cursor-pointer">
