@@ -23,7 +23,7 @@
   --font-main: "Poppins", sans-serif;
 }
 
-/* Hero section backgrounds (moved from component CSS to global) */
+
 #left_Hero {
   background: url("/images/left-hero.png");
   background-position: center;
