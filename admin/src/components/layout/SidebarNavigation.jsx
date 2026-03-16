@@ -42,10 +42,10 @@ export default function SidebarNavigation() {
         </li>
 
         {/* Settings */}
-        <li className="flex items-center gap-3  pl-[20px] py-[16px] text-[22px] font-normal font-main text-[#666666] hover:text-[22px] hover:text-text hover:bg-[#EDF2EE] hover:border-l-4 border-green  cursor-pointer">
+        <Link to={"/settings"} className="flex items-center gap-3  pl-[20px] py-[16px] text-[22px] font-normal font-main text-[#666666] hover:text-[22px] hover:text-text hover:bg-[#EDF2EE] hover:border-l-4 border-green  cursor-pointer">
           <FiSettings  className="text-[24px]" />
           <span>Settings</span>
-        </li>
+        </Link>
 
         {/* Logout */}
         <li className="flex items-center gap-3  pl-[20px] py-[16px] text-[22px] font-normal font-main text-[#666666] hover:text-[22px] hover:text-text hover:bg-[#EDF2EE] hover:border-l-4 border-green  cursor-pointer">
