@@ -1,18 +1,21 @@
-const { verifyTkn } = require("../services/helpers");
-const { responseHandler } = require("../utils/responseHandler");
+const { verifyToken } = require("../services/helpers");
+const { responseHandler } = require("../services/responseHandler");
 
-
-const authMidlleware = async (req, res, next) => {
+const authMiddleWare = async (req, res, next) => {
   try {
     const token = req.cookies;
-    if (!token["X-AS-Tkn"]) return responseHandler.error(res, 400, "Invalid Request");
-    const decoded = verifyTkn(token["X-AS-Tkn"]);
-    if (!decoded) return responseHandler.error(res, 400, "Invalid Request");
+    if (!token["X-AS-Token"]) {
+      return responseHandler.error(res, 401, "Invalid Request");
+    }
+    const decoded = verifyToken(token["X-AS-Token"]);
+    if (!decoded) {
+      return responseHandler.error(res, 401, "Invalid Request");
+    }
     req.user = decoded;
     next();
   } catch (error) {
-    responseHandler.error(res, "Something went wrong", 500);
+    return responseHandler.error(res, 401, "Invalid Request");
   }
 };
 
-module.exports = { authMidlleware };
+module.exports = authMiddleWare;

@@ -1,74 +1,72 @@
-const emailTemp = ({ otp }) => `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-</head>
-<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, Helvetica, sans-serif;">
+const emailVerifyTem = ({ otp }) => {
+  return `
+    <body style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, Helvetica, sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f6f8; padding:20px;">
+      <tr>
+        <td align="center">
+          <table width="100%" cellpadding="0" cellspacing="0" style="max-width:500px; background-color:#ffffff; border-radius:8px; overflow:hidden;">
+            
+            <!-- Header -->
+            <tr>
+              <td style="background-color:#1a73e8; padding:20px; text-align:center;">
+                <h1 style="color:#ffffff; margin:0; font-size:22px;">
+                  Verify Your Email
+                </h1>
+              </td>
+            </tr>
 
-<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f6f8; padding:30px 0;">
-  <tr>
-    <td align="center">
+            <!-- Body -->
+            <tr>
+              <td style="padding:30px; color:#333333;">
+                <p style="margin:0 0 15px; font-size:15px;">
+                  Hi <strong>{{USER_NAME}}</strong>,
+                </p>
 
-      <table width="100%" cellpadding="0" cellspacing="0"
-        style="max-width:520px; background:#ffffff; border-radius:8px; overflow:hidden;">
+                <p style="margin:0 0 20px; font-size:15px; line-height:1.5;">
+                  Thank you for creating an account with <strong>{{APP_NAME}}</strong>.
+                  Please use the OTP below to verify your email address.
+                </p>
+                <div style="text-align:center; margin:30px 0;">
+                  <span style="
+                    display:inline-block;
+                    font-size:28px;
+                    letter-spacing:6px;
+                    padding:15px 25px;
+                    background-color:#f1f3f4;
+                    color:#1a73e8;
+                    font-weight:bold;
+                    border-radius:6px;
+                  ">
+                    ${otp}
+                  </span>
+                </div>
 
-        <!-- Header -->
-        <tr>
-          <td style="background:#0d6efd; padding:20px; text-align:center;">
-            <h2 style="color:#ffffff; margin:0;">Your OTP Code</h2>
-          </td>
-        </tr>
+                <p style="margin:0 0 15px; font-size:14px;">
+                  This OTP is valid for <strong>{{OTP_EXPIRY}}</strong> minutes.
+                </p>
 
-        <!-- Body -->
-        <tr>
-          <td style="padding:30px; text-align:center;">
-            <p style="color:#333; font-size:14px;">
-              Your One-Time Password (OTP) is:
-            </p>
+                <p style="margin:0; font-size:14px; color:#777777;">
+                  If you didn’t request this, you can safely ignore this email.
+                </p>
+              </td>
+            </tr>
 
-            <div style="margin:20px 0;">
-              <span style="
-                font-size:26px;
-                font-weight:bold;
-                letter-spacing:6px;
-                color:#0d6efd;
-                background:#f1f5ff;
-                padding:14px 28px;
-                border-radius:6px;
-                display:inline-block;">
-                ${otp}
-              </span>
-            </div>
+            <!-- Footer -->
+            <tr>
+              <td style="background-color:#f4f6f8; padding:15px; text-align:center;">
+                <p style="margin:0; font-size:12px; color:#999999;">
+                  © {{YEAR}} {{APP_NAME}}. All rights reserved.
+                </p>
+              </td>
+            </tr>
 
-            <p style="font-size:13px; color:#666;">
-              This OTP is valid for <strong>2 minutes</strong>.
-            </p>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>`
+}
 
-            <p style="font-size:12px; color:#999;">
-              Please do not share this code with anyone.
-            </p>
-          </td>
-        </tr>
-
-        <!-- Footer -->
-        <tr>
-          <td style="background:#f4f6f8; padding:15px; text-align:center;">
-            <p style="font-size:12px; color:#999;">
-              © 2026 Node E-commarce. All rights reserved.
-            </p>
-          </td>
-        </tr>
-
-      </table>
-
-    </td>
-  </tr>
-</table>
-
-</body>
-</html>
-`;
 const resetPassEmailTemp = ({ otp }) => {
   return `
   <div style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, Helvetica, sans-serif;">
@@ -111,7 +109,7 @@ const resetPassEmailTemp = ({ otp }) => {
 
                 <p style="margin:0;">
                   Thanks,<br />
-                  <strong>Node E-commarce</strong>
+                  <strong>Your Company Name</strong>
                 </p>
               </td>
             </tr>
@@ -120,7 +118,7 @@ const resetPassEmailTemp = ({ otp }) => {
             <tr>
               <td style="background-color:#f0f2f4; padding:15px; text-align:center; font-size:12px; color:#777777;">
                 <p style="margin:0;">
-                  © 2026 Node E-commarce. All rights reserved.
+                  © 2026 Your Company Name. All rights reserved.
                 </p>
               </td>
             </tr>
@@ -130,6 +128,7 @@ const resetPassEmailTemp = ({ otp }) => {
       </tr>
     </table>
   </div>
-  `;
-};
-module.exports = { emailTemp, resetPassEmailTemp };
+  `
+}
+
+module.exports = { emailVerifyTem, resetPassEmailTemp }

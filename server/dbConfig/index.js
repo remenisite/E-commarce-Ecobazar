@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
-
+const { default: mongoose } = require("mongoose");
+// node2501-ecommerce
 const dbConfig = () => {
-  mongoose
-    .connect(process.env.DB_STRING)
-    .then(() => console.log("database ok"));
+  return mongoose.connect(process.env.DB_URL).then(() => {
+    console.log("DB Connected");
+  });
 };
 
 module.exports = dbConfig;

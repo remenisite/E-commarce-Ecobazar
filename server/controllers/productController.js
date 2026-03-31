@@ -1,8 +1,11 @@
 const categorySchema = require("../models/categorySchema");
 const productSchema = require("../models/productSchema");
-const { uploadtoCloude } = require("../services/cloudinaryServices");
-const SIZE_ENUM = require("../utils/enum");
-const { responseHandler } = require("../utils/responseHandler");
+const {
+  uploadToCloudinary,
+  deleteFromCloudinary,
+} = require("../services/cloudinaryService");
+const { responseHandler } = require("../services/responseHandler");
+const { SIZE_ENUM } = require("../services/utils");
 
 const createProduct = async (req, res) => {
   try {
@@ -13,89 +16,109 @@ const createProduct = async (req, res) => {
       category,
       price,
       discountPercentage,
-      varients,
+      variants,
       tags,
       isActive,
     } = req.body;
     const thumbnail = req.files?.thumbnail;
     const images = req.files?.images;
-    if (!title) return responseHandler.error(res, 400, "title is not difine");
-    if (!slug) return responseHandler.error(res, 400, "slug is not define");
-    const isExistSlug = await productSchema.findOne({
+
+    if (!title)
+      return responseHandler.error(res, 400, "Product title is required");
+    if (!slug) return responseHandler.error(res, 400, "Slug is required");
+    const isSlugExist = await productSchema.findOne({
       slug: slug.toLowerCase(),
     });
-    if (isExistSlug)
-      return responseHandler.error(res, 400, "slug already exist");
+    if (isSlugExist)
+      return responseHandler.error(res, 400, "Slug already exist");
     if (!description)
-      return responseHandler.error(res, 400, "description is not difine");
+      return responseHandler.error(res, 400, "Product Description is required");
     if (!category)
-      return responseHandler.error(res, 400, "category is not difine");
-    const isvalidCategory = await categorySchema.findById(category);
-    if (!isvalidCategory)
+      return responseHandler.error(res, 400, "Product Category is required");
+    const isCategoryExist = await categorySchema.findById(category);
+    if (!isCategoryExist)
       return responseHandler.error(res, 400, "Invalid Category");
-    if (!price) return responseHandler.error(res, 400, "price is not difine");
-    const variantsData = JSON.parse(varients); //---------------------- temporary
+    if (!price)
+      return responseHandler.error(res, 400, "Product Price is required");
+
+    // apadotor jonno
+    const variantsData = JSON.parse(variants);
     if (!Array.isArray(variantsData) || variantsData.length === 0)
-      return responseHandler.error(res, 400, "Minimum 1 varients need");
-    for (const varient of variantsData) {
-      if (!varient.sku)
-        return responseHandler.error(res, 400, "Sku is required");
-      if (!varient.color)
-        return responseHandler.error(res, 400, "color is required");
-      if (!varient.size)
-        return responseHandler.error(res, 400, "size is required");
-      if (!SIZE_ENUM.includes(varient.size))
-        return responseHandler.error(res, 400, "Invalid Size");
-      if (!varient.stock || varient.stock < 1)
+      return responseHandler.error(res, 400, "Minimum 1 variant is required.");
+
+    for (const variant of variantsData) {
+      if (!variant.sku)
+        return responseHandler.error(res, 400, "SKU is required.");
+      if (!variant.color)
+        return responseHandler.error(res, 400, "Color is required.");
+      if (!variant.size)
+        return responseHandler.error(res, 400, "Color is required.");
+      if (!SIZE_ENUM.includes(variant.size))
+        return responseHandler.error(res, 400, "Invalid size");
+      if (!variant.stock || variant.stock < 1)
         return responseHandler.error(
           res,
           400,
-          "stock is required and more then 1",
+          "Stock is required and must be more then 0"
         );
     }
+
     const skus = variantsData.map((v) => v.sku);
     if (new Set(skus).size !== skus.length)
-      return responseHandler.error(res, 400, "Sku  must unique");
+      return responseHandler.error(res, 400, "SUK must unique");
+
     if (!thumbnail || thumbnail?.length === 0)
-      return responseHandler.error(res, 400, "Product Thaumbnail is required");
-    if (!images && images?.length > 4)
-      return responseHandler.error(res, 400, "Minimum 4 picture need");
-    const thumbnailUrl = await uploadtoCloude(thumbnail[0], "products");
-    let imageUrl = [];
+      return responseHandler.error(res, 400, "Product Thumbnail is required");
+    if (images && images?.length > 4)
+      return responseHandler.error(res, 400, "You can upload images max 4");
+
+    const thumnailUrl = await uploadToCloudinary(thumbnail[0], "products");
+    let imagesUrl = [];
+
     if (images) {
-      const resPromise = images.map(async (item) => {
-        return uploadtoCloude(item, "products");
-      });
-      const result = await Promise.all(resPromise);
-      imageUrl = result.map((r) => r.secure_url);
+      const resPromise = images.map(async (item) =>
+        uploadToCloudinary(item, "products")
+      );
+      const results = await Promise.all(resPromise);
+      imagesUrl = results.map((r) => r.secure_url);
     }
+
     const newProduct = new productSchema({
       title,
       slug: slug.toLowerCase(),
       description,
       category,
       price,
-      thumbnail: thumbnailUrl.secure_url,
-      images: imageUrl,
       discountPercentage,
-      varients: variantsData,
+      variants: variantsData,
+      thumbnail: thumnailUrl.secure_url,
+      images: imagesUrl,
       tags,
       isActive,
     });
     newProduct.save();
-    responseHandler.success(res, 201, "Product upload successfully");
+    return responseHandler.success(
+      res,
+      201,
+      newProduct,
+      "Product uploaded successfully"
+    );
   } catch (error) {
-    responseHandler.error(res, 500, "Something went wrong");
+    return responseHandler.error(res, 500, error.message);
   }
 };
 
-const getProduct = async (req, res) => {
+const getProductList = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     const category = req.query.category;
+    const search = req.query.search;
     const skip = (page - 1) * limit;
+    console.log(category);
+
     const totalProducts = await productSchema.countDocuments();
+
     const pipeline = [
       {
         $match: {
@@ -111,16 +134,11 @@ const getProduct = async (req, res) => {
         },
       },
       { $unwind: "$category" },
-      // {
-      // $match:{
-      //   "category.name":{$regex: category, $options: "i"}     ----------------- mongodb regeex
-      // }
-      // },
-      // { $count: "count" },
       { $sort: { createdAt: -1 } },
       { $skip: skip },
       { $limit: limit },
     ];
+
     if (category) {
       pipeline.push({
         $match: {
@@ -128,18 +146,21 @@ const getProduct = async (req, res) => {
         },
       });
     }
-    //  const productList = await productSchema
-    // .find({ isActive: false })
-    // .populate({
-    // path: "category",
-    // match: { name: category},
-    // })
-    // .skip(skip)
-    // .limit(limit)
-    // .sort({ createdAt: -1 });
+    if (search) {
+      pipeline.push({
+        $match: {
+          title: {
+            $regex: search,
+            $options: "i",
+          },
+        },
+      });
+    }
+
     const productList = await productSchema.aggregate(pipeline);
-    console.log(productList);
+
     const totalPages = Math.ceil(totalProducts / limit);
+
     return responseHandler.success(res, 200, {
       products: productList,
       pagination: {
@@ -152,11 +173,11 @@ const getProduct = async (req, res) => {
       },
     });
   } catch (error) {
-    responseHandler.error(res, 500, "Something went wrong");
+    return responseHandler.error(res, 500, error.message);
   }
 };
 
-const getProductDetails = async (req, res) => {
+const getProductDetals = async (req, res) => {
   try {
     const { slug } = req.params;
     const productDetails = await productSchema
@@ -170,7 +191,7 @@ const getProductDetails = async (req, res) => {
       res,
       200,
       productDetails,
-      "Product Details Fetched Successfully",
+      "Product Details Fetched Successfully"
     );
   } catch (error) {
     return responseHandler.error(res, 500, error.message);
@@ -185,62 +206,107 @@ const updateProduct = async (req, res) => {
       category,
       price,
       discountPercentage,
-      varients,
+      variants,
       tags,
       isActive,
+      destroyImages = [],
     } = req.body;
+    const { slug } = req.params;
     const thumbnail = req.files?.thumbnail;
     const images = req.files?.images;
-    const { slug } = req.params;
+
     const productData = await productSchema.findOne({ slug });
+
     if (title) productData.title = title;
     if (description) productData.description = description;
     if (category) productData.category = category;
     if (price) productData.price = price;
+    if (tags && tags?.length > 0 && Array.isArray(tags))
+      productData.tags = tags;
     if (discountPercentage) productData.discountPercentage = discountPercentage;
-    if (tags &&tags?.length > 0 && Array.isArray(tags)) productData.tags = tags;
-    if (isActive) productData.isActive = isActive == "true";
-    const variantsData = JSON.parse(varients);
-    if (!Array.isArray(variantsData) && variantsData.length > 0) {
-      for (const varient of variantsData) {
-        if (!varient.sku)
-          return responseHandler.error(res, 400, "Sku is required");
-        if (!varient.color)
-          return responseHandler.error(res, 400, "color is required");
-        if (!varient.size)
-          return responseHandler.error(res, 400, "size is required");
-        if (!SIZE_ENUM.includes(varient.size))
-          return responseHandler.error(res, 400, "Invalid Size");
-        if (!varient.stock || varient.stock < 1)
+    if (isActive) productData.isActive = isActive === "true";
+
+    const variantsData = variants && JSON.parse(variants);
+    if (Array.isArray(variantsData) && variantsData.length > 0) {
+      for (const variant of variantsData) {
+        if (!variant.sku)
+          return responseHandler.error(res, 400, "SKU is required.");
+        if (!variant.color)
+          return responseHandler.error(res, 400, "Color is required.");
+        if (!variant.size)
+          return responseHandler.error(res, 400, "Color is required.");
+        if (!SIZE_ENUM.includes(variant.size))
+          return responseHandler.error(res, 400, "Invalid size");
+        if (!variant.stock || variant.stock < 1)
           return responseHandler.error(
             res,
             400,
-            "stock is required and more then 1",
+            "Stock is required and must be more then 0"
           );
       }
+
       const skus = variantsData.map((v) => v.sku);
       if (new Set(skus).size !== skus.length)
-        return responseHandler.error(res, 400, "Sku  must unique");
-      productData.varients = variantsData;
+        return responseHandler.error(res, 400, "SUK must unique");
+
+      productData.variants = variantsData;
     }
+
     if (thumbnail) {
       const imgPublicId = productData.thumbnail.split("/").pop().split(".")[0];
-      deleteToCloude(`products/${imgPublicId}`);
-      const ImgRes = await uploadtoCloude(thumbnail, "products");
-      productData.thumbnail0 = ImgRes.secure_url;
+      deleteFromCloudinary(`products/${imgPublicId}`);
+      const imgRes = await uploadToCloudinary(thumbnail, "products");
+      productData.thumbnail = imgRes.secure_url;
     }
-    // if (images) {
-    //   const resPromise = images.map(async (item) => {
-    //     return uploadtoCloude(item, "products");
-    //   });
-    //   const result = await Promise.all(resPromise);
-    //   imageUrl = result.map((r) => r.secure_url);
-    // }
+    let imagesUrl = [];
+
+    let totalImges = productData.images.length;
+    if (destroyImages.length > 0) totalImges -= destroyImages.length;
+    if (Array.isArray(images) && images.length > 0) totalImges += images.length;
+
+    if (totalImges > 4)
+      return responseHandler.error(res, 400, "You can upload maximum 4 images");
+    if (totalImges < 1)
+      return responseHandler.error(res, 400, "Minimum 1 images should be stay");
+
+    if (images) {
+      const resPromise = images.map(async (item) =>
+        uploadToCloudinary(item, "products")
+      );
+      const results = await Promise.all(resPromise);
+      imagesUrl = results.map((r) => r.secure_url);
+    }
+
+    if (Array.isArray(destroyImages) && destroyImages.length > 0) {
+      for (const url of destroyImages) {
+        const imgPublicId = url.split("/").pop().split(".")[0];
+        deleteFromCloudinary(`products/${imgPublicId}`);
+      }
+    }
+
+    let filteredImgs = productData.images.filter((item) => {
+      return !destroyImages.includes(item);
+    });
+
+    imagesUrl = imagesUrl.concat(filteredImgs);
+    if (imagesUrl.length > 0) productData.images = imagesUrl;
+
     productData.save();
-    responseHandler.success(res, 200, productData, "Product Data Upload");
+
+    return responseHandler.success(
+      res,
+      200,
+      productData,
+      "Product Updated Successfully"
+    );
   } catch (error) {
-    responseHandler.error(res, 500, "Something went wrong");
+    console.log(error);
   }
 };
 
-module.exports = { createProduct, getProduct, getProductDetails, updateProduct,};
+module.exports = {
+  createProduct,
+  getProductList,
+  getProductDetals,
+  updateProduct,
+};

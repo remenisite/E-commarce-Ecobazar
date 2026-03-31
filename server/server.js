@@ -1,21 +1,22 @@
 const express = require("express");
-require("dotenv").config();
-const port = 8000;
 const app = express();
+const port = 8000;
 const cors = require("cors");
 var cookieParser = require("cookie-parser");
 const dbConfig = require("./dbConfig");
-const route = require("./routes");
+const route = require("./router");
 const cloudinaryConfig = require("./services/cloudinaryConfig");
-
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(cookieParser());
+require("dotenv").config();
+app.use(cors());
 dbConfig();
 cloudinaryConfig();
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(cors());
-app.use(express.json());
 app.use(route);
 
 app.listen(port, () => {
-  console.log("server ok");
+  console.log("Server is running");
 });

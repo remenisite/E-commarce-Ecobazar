@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema(
   {
-    avatar:{
-      type: String
+    avatar: {
+      type: String,
     },
     fullName: {
       type: String,
@@ -17,15 +17,11 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      unique: true,
     },
     phone: {
       type: Number,
     },
     address: {
-      type: String,
-    },
-    district: {
       type: String,
     },
     role: {
@@ -44,24 +40,27 @@ const userSchema = new mongoose.Schema(
     otpExpires: {
       type: Date,
     },
-    resetPassTkn: {
+    resetPassToken: {
       type: String,
     },
-    resetExpires:{
-      type: Date
-    }
+    resetExpire: {
+      type: Date,
+    },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
+
 userSchema.pre("save", async function () {
   const user = this;
   if (!user.isModified("password")) {
     return;
   }
+
   try {
     user.password = await bcrypt.hash(user.password, 10);
-  } catch (err) {}
+  } catch (err) { }
 });
+
 userSchema.methods.comparePassword = async function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };

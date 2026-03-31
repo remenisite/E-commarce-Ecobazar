@@ -1,17 +1,15 @@
 const responseHandler = {
-  success: (res, statusCode = 200, message = "Success", data = null) => {
+  success: (res, statusCode = 200, data, message) => {
     return res.status(statusCode).json({
       success: true,
       message,
-      ...(data && { data }),
+      data,
     });
   },
-
-  error: (res, statusCode = 500, message = "Error", error = null) => {
+  error: (res, statusCode = 500, message) => {
     return res.status(statusCode).json({
       success: false,
-      message,
-      ...(error && { error }),
+      message: message || "Internal Server Error",
     });
   },
 };
