@@ -73,10 +73,10 @@ const checkOut = async (req, res) => {
           },
           unit_amount: item.price * 100,
         },
-        quantity: item.quantity,
+        quantity:  item.quantity,
       })),
 
-      customer_email: req.user.email,
+      customer_email:`${req.user.email}` ,
 
       success_url: `${process.env.CLIENT_URL}/success`,
       cancel_url: `${process.env.CLIENT_URL}/error`,

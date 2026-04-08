@@ -10,12 +10,12 @@ const dns = require('dns');
 dbConfig();
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 app.use(express.urlencoded({ extended: true }))
-app.use(express.json());
 app.use(cookieParser());
-app.use(route);
 app.use(express.urlencoded({ extended: true }))
 app.post("/webhook", express.raw({ type: "application/json" }), webhook)
 cloudinaryConfig()
+app.use(express.json());
+app.use(route);
 app.listen(8000, () => {
   console.log("SERVER OK");
 });
