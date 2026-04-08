@@ -26,7 +26,7 @@ const checkOut = async (req, res) => {
     if (!cartData)
       return responseHandler.error(res, 404, "cart not found");
 
-    // total price calculate
+    
     const totalPrice = cartData.items.reduce(
       (total, item) => total + item.subtotal,
       0
@@ -114,7 +114,6 @@ const webhook = async (req, res) => {
     );
   }
 
-// ✅ SUCCESS CASE
 if (event.type === "checkout.session.completed") {
   const session = event.data.object;
 
