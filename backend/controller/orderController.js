@@ -114,29 +114,61 @@ const webhook = async (req, res) => {
     );
   }
 
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
+// ✅ SUCCESS CASE
+if (event.type === "checkout.session.completed") {
+  const session = event.data.object;
 
-    try {
-      if (!session.metadata?.orderId) {
-        return responseHandler.error(res, 400, "No orderId found");
-      }
-
-      await Order.findByIdAndUpdate(
-        session.metadata.orderId,
-        {
-          paymentStatus: "paid", // ⚠️ fixed (see note below)
-        },
-        { new: true }
-      );
-    } catch (error) {
-      return responseHandler.error(
-        res,
-        400,
-        `Webhook Error: ${error.message}`
-      );
+  try {
+    if (!session.metadata?.orderId) {
+      return responseHandler.error(res, 400, "No orderId found");
     }
+
+    await Order.findByIdAndUpdate(
+      session.metadata.orderId,
+      {
+        paymentStatus: "PAID",
+      },
+{ returnDocument: "after" }
+    );
+  } catch (error) {
+    return responseHandler.error(
+      res,
+      400,
+      `Webhook Error: ${error.message}`
+    );
   }
+}
+
+if (
+  event.type === "checkout.session.async_payment_failed" ||
+  event.type === "payment_intent.payment_failed"
+) {
+  const session = event.data.object;
+
+  try {
+    const orderId =
+      session.metadata?.orderId ||
+      session?.metadata?.orderId; // fallback
+
+    if (!orderId) {
+      return responseHandler.error(res, 400, "No orderId found");
+    }
+
+    await Order.findByIdAndUpdate(
+      orderId,
+      {
+        paymentStatus: "FAILED",
+      },
+    { returnDocument: "after" }
+    );
+  } catch (error) {
+    return responseHandler.error(
+      res,
+      400,
+      `Payment Failed Webhook Error: ${error.message}`
+    );
+  }
+}
 
   console.log("event received", event);
 
