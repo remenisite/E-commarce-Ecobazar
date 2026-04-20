@@ -1,6 +1,6 @@
 import React from "react";
-import OrderHistory from "../components/order/OrderHistory";
-import RecentOrder from "../components/dashboard/RecentOrder";
+import OrderHistory from "../../components/order/OrderHistory";
+import RecentOrder from "../../components/dashboard/RecentOrder";
 
 const Order = () => {
   return (

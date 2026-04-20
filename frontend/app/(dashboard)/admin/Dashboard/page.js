@@ -1,6 +1,6 @@
 import React from "react";
-import ProfileCard from "../components/dashboard/ProfileCard";
-import RecentOrder from "../components/dashboard/RecentOrder";
+import ProfileCard from "../../components/dashboard/ProfileCard";
+import RecentOrder from "../../components/dashboard/RecentOrder";
 
 
 const Dashboard = () => {
