@@ -5,27 +5,26 @@ import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const VerifyEmail = () => {
+const ResendOtp = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const email = searchParams.get("email");
+  // query থেকে email নেবো
+  const emailFromQuery = searchParams.get("email");
 
   const [errors, setErrors] = useState({
-    otpErr: "",
     emailErr: "",
   });
 
   const [userData, setUserData] = useState({
-    otp: "",
-    email: email || "",
+    email: emailFromQuery || "",
   });
 
   const handelSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:8000/auth/verify-otp", {
+      const res = await fetch("http://localhost:8000/auth/resend-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,16 +35,12 @@ const VerifyEmail = () => {
       const data = await res.json();
 
       if (!res.ok) {
-        if (data.message === "OTP is required") {
-          setErrors((prev) => ({ ...prev, otpErr: data.message }));
-        }
-
         if (data.message === "Email is required") {
           setErrors((prev) => ({ ...prev, emailErr: data.message }));
         }
 
-        if (data.message === "Invalid or expired OTP") {
-          setErrors((prev) => ({ ...prev, otpErr: data.message }));
+        if (data.message === "User not found or already verified") {
+          setErrors((prev) => ({ ...prev, emailErr: data.message }));
         }
 
         return;
@@ -53,9 +48,11 @@ const VerifyEmail = () => {
 
       toast.success(data.message);
 
+      // OTP verify page এ পাঠানো
       setTimeout(() => {
-        router.push("/signin");
+        router.push(`/verify?email=${userData.email}`);
       }, 2000);
+
     } catch (error) {
       console.log(error);
     }
@@ -66,37 +63,33 @@ const VerifyEmail = () => {
       <section className="flex min-h-[calc(100vh-180px)] items-center justify-center px-4 py-12">
         <Toaster />
         <div className="max-w-md relative flex flex-col p-4 rounded-md text-black bg-white">
+          
           <div className="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">
-            Verify Your Email
+            Resend OTP
           </div>
 
           <div className="text-sm font-normal mb-4 text-center text-[#1e0e4b]">
-            Enter the OTP sent to your email
+            Enter your email to receive a new OTP
           </div>
 
           <form onSubmit={handelSubmit} className="flex flex-col gap-3">
+
             <Input
               value={userData.email}
-              readOnly
+              onChange={(e) => {
+                setUserData((prev) => ({
+                  ...prev,
+                  email: e.target.value,
+                }));
+                setErrors((prev) => ({ ...prev, emailErr: "" }));
+              }}
               label="Email"
+              placeholder="Enter your email"
               type="email"
               error={errors?.emailErr}
             />
 
-            <Input
-              onChange={(e) => {
-                setUserData((prev) => ({
-                  ...prev,
-                  otp: e.target.value,
-                }));
-                setErrors((prev) => ({ ...prev, otpErr: "" }));
-              }}
-              label="OTP Code"
-              placeholder="Enter OTP"
-              error={errors?.otpErr}
-            />
-
-            <Button type="submit">Verify Email</Button>
+            <Button type="submit">Resend OTP</Button>
           </form>
         </div>
       </section>
@@ -104,4 +97,4 @@ const VerifyEmail = () => {
   );
 };
 
-export default VerifyEmail;
+export default ResendOtp;
