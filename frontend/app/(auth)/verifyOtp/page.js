@@ -25,7 +25,7 @@ const VerifyEmail = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:8000/auth/verify-otp", {
+      const res = await fetch("http://localhost:8000/auth/verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
