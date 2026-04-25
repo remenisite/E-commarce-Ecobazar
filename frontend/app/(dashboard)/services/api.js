@@ -8,9 +8,10 @@ export const adminApiService = createApi({
     getProducts: build.query({
       query: () => "product/allproducts",
     }),
+    getCategories: build.query({
+      query: () => "/category/all",
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = adminApiService;
-
-// getProducts = http://localhost:8000/products
+export const { useGetProductsQuery ,useGetCategoriesQuery } = adminApiService;
