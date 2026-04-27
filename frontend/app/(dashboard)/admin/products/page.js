@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import { formatCurrency, getDiscountedPrice } from "@/lib/price";
 import { useGetProductsQuery } from "../../services/api";
 import Image from "next/image";
@@ -12,18 +11,6 @@ export default function AdminProductsPage() {
 
   return (
     <>
-      <AdminPageHeader
-        title="Product List"
-        description="Browse and manage all products in the catalog."
-        action={
-          <Link
-            href="/admin/products/new"
-            className="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
-          >
-            Create New Product
-          </Link>
-        }
-      />
 
       <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm mt-10">
         <div className="overflow-x-auto">
