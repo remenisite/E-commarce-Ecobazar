@@ -24,5 +24,3 @@ export const adminApiService = createApi({
 });
 
 export const { useGetProductsQuery, useGetCategoriesQuery, useCreateNewProductMutation } = adminApiService;
-
-// getProducts = http://localhost:8000/products

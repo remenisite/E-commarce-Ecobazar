@@ -6,7 +6,7 @@ import {
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import { categories } from "@/data/categories";
-import { generateSlug } from "@/lib/utils";
+import { generateSlug } from "@/utils/generateSlug";
 import Image from "next/image";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
