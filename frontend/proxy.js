@@ -5,36 +5,47 @@ const SECRET = new TextEncoder().encode(process.env.JWT_SEC);
 
 export async function proxy(request) {
   const { pathname } = request.nextUrl;
-  // Protect only /admin routes
+
   if (pathname.startsWith("/admin")) {
     const token = request.cookies.get("X-RF-Token")?.value;
 
     if (!token) {
-      return NextResponse.redirect(new URL("/signin", request.url));
+      const response = NextResponse.redirect(new URL("/signin", request.url));
+
+      // Delete cookies
+      response.cookies.set("X-RF-Token", "", { maxAge: 0 });
+      response.cookies.set("X-AS-Token", "", { maxAge: 0 });
+
+      return response;
     }
+
     try {
-      // Verify JWT
       const { payload } = await jwtVerify(token, SECRET);
 
-      // Optional: role-based check
       if (!["admin", "editor"].includes(payload.role)) {
-        return NextResponse.redirect(new URL("/signin", request.url));
+        const response = NextResponse.redirect(new URL("/signin", request.url));
+
+        response.cookies.set("X-RF-Token", "", { maxAge: 0 });
+        response.cookies.set("X-AS-Token", "", { maxAge: 0 });
+
+        return response;
       }
 
-      // Token is valid → continue
       return NextResponse.next();
     } catch (err) {
-      // console.log("Cookie Error=>", err);
-      request.cookies.delete("X-RF-Token");
-      request.cookies.delete("X-AS-Token");
-      return NextResponse.redirect(new URL("/signin", request.url));
+      const response = NextResponse.redirect(new URL("/signin", request.url));
+
+      // Properly delete both tokens
+      response.cookies.set("X-RF-Token", "", { maxAge: 0 });
+      response.cookies.set("X-AS-Token", "", { maxAge: 0 });
+
+      return response;
     }
   }
 
   return NextResponse.next();
 }
 
-// Apply middleware only to admin routes
 export const config = {
   matcher: ["/admin/:path*"],
 };
