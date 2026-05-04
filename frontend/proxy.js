@@ -1,34 +1,32 @@
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
-const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
+const SECRET = new TextEncoder().encode(process.env.JWT_SEC);
 
 export async function proxy(request) {
   const { pathname } = request.nextUrl;
-  console.log("pathname", pathname);
-
   // Protect only /admin routes
   if (pathname.startsWith("/admin")) {
-    const token = request.cookies.get("X-AS-Token")?.value;
+    const token = request.cookies.get("X-RF-Token")?.value;
 
     if (!token) {
       return NextResponse.redirect(new URL("/signin", request.url));
     }
-    console.log(SECRET);
-
     try {
       // Verify JWT
       const { payload } = await jwtVerify(token, SECRET);
 
       // Optional: role-based check
       if (!["admin", "editor"].includes(payload.role)) {
-        return NextResponse.redirect(new URL("/", request.url));
+        return NextResponse.redirect(new URL("/signin", request.url));
       }
 
       // Token is valid → continue
       return NextResponse.next();
     } catch (err) {
-      console.log(err);
+      // console.log("Cookie Error=>", err);
+      request.cookies.delete("X-RF-Token");
+      request.cookies.delete("X-AS-Token");
       return NextResponse.redirect(new URL("/signin", request.url));
     }
   }

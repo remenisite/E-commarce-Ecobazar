@@ -11,7 +11,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   if (result.error && result.error.status === 401) {
     const refreshResult = await baseQuery(
       {
-        url: "/auth/refreshtoken",
+        url: "/auth/refresh",
         method: "POST",
       },
       api,
@@ -19,7 +19,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     );
 
     if (refreshResult.data) {
-      // retry original request
       result = await baseQuery(args, api, extraOptions);
     }
   }
