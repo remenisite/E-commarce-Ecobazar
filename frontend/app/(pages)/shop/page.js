@@ -126,22 +126,7 @@ export default async function ShopPage({ searchParams }) {
 
   return (
     <>
-      <section className="rounded-4xl border border-slate-200 bg-white px-6 py-8 shadow-sm sm:px-8">
-        <p className="text-xs uppercase tracking-[0.16em] text-slate-400">
-          Shop
-        </p>
-        <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-          Curated Styles For Everyday Motion
-        </h1>
-        <p className="mt-3 max-w-3xl text-sm text-slate-600 sm:text-base">
-          Explore premium essentials and trending seasonal edits. Dummy data is
-          used for this UI and no API is connected yet.
-        </p>
 
-        <div className="mt-5 text-sm text-slate-600">
-          Showing {visibleProducts.length} of {sortedProducts.length} products
-        </div>
-      </section>
 
       <section className="mt-8 grid gap-6 lg:grid-cols-[270px_1fr]">
         <aside className="h-fit rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
