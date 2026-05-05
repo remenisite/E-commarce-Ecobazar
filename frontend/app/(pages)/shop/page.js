@@ -1,9 +1,9 @@
 import Link from "next/link";
-import PageContainer from "@/components/layout/PageContainer";
 import ProductCard from "@/components/products/ProductCard";
 import { categories, getCategoryBySlug } from "@/data/categories";
 import { products } from "@/data/products";
 import { getDiscountedPrice } from "@/lib/price";
+import { apiClient } from "@/lib/apiClient";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -118,16 +118,14 @@ export default async function ShopPage({ searchParams }) {
   const categoryMap = new Map(categories.map((item) => [item._id, item]));
   const pageLinks = Array.from({ length: totalPages }, (_, index) => index + 1);
 
-  const res = await fetch("http://localhost:8000/product/allproducts", {
-    next: {
-      revalidate: 5000,
-    },
+  const res = await apiClient.get("/product/allproducts", {
+    revalidate: 60 * 5,
   });
-  const data = await res.json();
-  console.log(data);
+
+  console.log(res);
 
   return (
-    <PageContainer className="pt-10 sm:pt-14">
+    <>
       <section className="rounded-4xl border border-slate-200 bg-white px-6 py-8 shadow-sm sm:px-8">
         <p className="text-xs uppercase tracking-[0.16em] text-slate-400">
           Shop
@@ -351,6 +349,6 @@ export default async function ShopPage({ searchParams }) {
           )}
         </div>
       </section>
-    </PageContainer>
+    </>
   );
 }

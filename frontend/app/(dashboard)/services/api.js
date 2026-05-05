@@ -11,7 +11,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   if (result.error && result.error.status === 401) {
     const refreshResult = await baseQuery(
       {
-        url: "/auth/refresh",
+        url: "/auth/refreshtoken",
         method: "POST",
       },
       api,
@@ -28,9 +28,11 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
 export const adminApiService = createApi({
   baseQuery: baseQueryWithReauth,
+  tagTypes: ["product"],
   endpoints: (build) => ({
     getProducts: build.query({
       query: () => "/product/allproducts",
+      providesTags: ["product"],
     }),
     getCategories: build.query({
       query: () => "/category/all",
@@ -42,6 +44,7 @@ export const adminApiService = createApi({
         headers: { "Content-Type": "multipart/form-data" },
         body: productData,
       }),
+      providesTags: ["product"],
     }),
   }),
 });
