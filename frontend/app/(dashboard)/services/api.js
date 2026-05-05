@@ -51,5 +51,3 @@ export const {
   useGetCategoriesQuery,
   useCreateNewProductMutation,
 } = adminApiService;
-
-// getProducts = http://localhost:8000/products
