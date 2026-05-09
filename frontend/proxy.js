@@ -24,10 +24,8 @@ export async function proxy(request) {
 
       if (!["admin", "editor"].includes(payload.role)) {
         const response = NextResponse.redirect(new URL("/signin", request.url));
-
         response.cookies.set("X-RF-Token", "", { maxAge: 0 });
         response.cookies.set("X-AS-Token", "", { maxAge: 0 });
-
         return response;
       }
 
@@ -42,7 +40,6 @@ export async function proxy(request) {
       return response;
     }
   }
-
   return NextResponse.next();
 }
 
