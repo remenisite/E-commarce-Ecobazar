@@ -1,6 +1,4 @@
 import Link from "next/link";
-import PageContainer from "@/components/layout/PageContainer";
-import ProductCard from "@/components/products/ProductCard";
 import { categories, getCategoryBySlug } from "@/data/categories";
 import { products } from "@/data/products";
 import { getDiscountedPrice } from "@/lib/price";
@@ -239,20 +237,7 @@ export default async function ShopPage({ searchParams }) {
         </aside>
 
         <div>
-          {hasResults ? (
-            <>
-              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                {visibleProducts.map((product) => (
-                  <ProductCard
-                    key={product.slug}
-                    product={product}
-                    categoryName={
-                      categoryMap.get(product.category)?.name || "Category"
-                    }
-                  />
-                ))}
-              </div>
-
+  
               {totalPages > 1 ? (
                 <nav className="mt-8 flex flex-wrap items-center justify-center gap-2">
                   {safeCurrentPage > 1 ? (
