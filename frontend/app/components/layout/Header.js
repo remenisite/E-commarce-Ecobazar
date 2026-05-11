@@ -1,7 +1,12 @@
+"use client"
+
+import { useSearchParams } from "next/navigation";
 import { FiMapPin } from "react-icons/fi";
 
 
 const Header = () => {
+    const searchParams = useSearchParams();
+  const currentQuery = searchParams.get("query") || "";
   return (
 
     <>
@@ -19,6 +24,13 @@ const Header = () => {
           <option value="" className="text-[15px] font-normal font-main text-green">Hindi</option>
           <option value="" className="text-[15px] font-normal font-main text-green">Urdu</option>
         </select>
+                    <input
+              type="search"
+              name="query"
+              defaultValue={currentQuery}
+              placeholder="Search products..."
+              className="h-full w-full border-0 bg-transparent px-2 text-sm outline-none"
+            />
              <select className="px-4 py-2 text-[15px] font-normal font-main text-green">
           <option  className="text-[15px] font-normal font-main text-green">Usd</option>
           <option  className="text-[15px] font-normal font-main text-green">Bdt</option>

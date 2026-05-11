@@ -25,7 +25,6 @@ const Navbar = () => {
               <ul className="flex items-center justify-center gap-[32px]">
                 <li> <Link href={"/"} className="text-[16px] font-medium font-main text-[#666666] flex items-center gap-1"  >  Home  </Link> </li>
                 <li> <Link href={"/shop"} className="text-[16px] font-medium font-main text-[#666666] flex items-center gap-1"  >  Shop <MdKeyboardArrowDown /> </Link> </li>
-                {/* <li> <Link href={"/"} className="text-[16px] font-medium font-main text-[#666666] flex items-center gap-1"  >  Pages <MdKeyboardArrowDown /> </Link> </li> */}
                 <li> <Link href={"/"} className="text-[16px] font-medium font-main text-[#666666] flex items-center gap-1"  >  Blog  </Link> </li>
                 <li> <Link href={"/about"} className="text-[16px] font-medium font-main text-[#666666] flex items-center gap-1"  >   About Us <MdKeyboardArrowDown /> </Link> </li>
               </ul>
