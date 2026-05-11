@@ -19,6 +19,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     );
 
     if (refreshResult.data) {
+      // retry original request
       result = await baseQuery(args, api, extraOptions);
     }
   }
