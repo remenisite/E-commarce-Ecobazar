@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PageContainer from "@/components/layout/PageContainer";
 import ProductCard from "@/components/products/ProductCard";
 import { categories, getCategoryBySlug } from "@/data/categories";
 import { products } from "@/data/products";
@@ -125,8 +126,6 @@ export default async function ShopPage({ searchParams }) {
   console.log(res);
 
   return (
-    <>
-
 
       <section className="mt-8 grid gap-6 lg:grid-cols-[270px_1fr]">
         <aside className="h-fit rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -334,6 +333,5 @@ export default async function ShopPage({ searchParams }) {
           )}
         </div>
       </section>
-    </>
   );
 }
